@@ -59,7 +59,7 @@
                 [-] target_mac_address = answer[0][1].hwsrc --> get mac address of target                                                                                                                                                                                                                              
                 [-] print(target_mac_address)
 
-  ### Craftinfg Malicious packet:
+  ### Craftinfg Malicious Packets:
 
             [-] We are essentially going to craft a packet that will tell the target machine that
                     the attacker machine is a router, so it sends all of its packets to the attacker machine
