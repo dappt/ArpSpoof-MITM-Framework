@@ -83,10 +83,4 @@ Script Usage (attack on a network with 3 machines: router, attacker, target):
                 send the same ARP requests we are sending still
 
             [!] If the target machine is unable to access the internet after it has been spoofed then you may need to run this command on your 
-                attacker machine to forward the packets: 
-
-                 [-] echo 1 >> /proc/sys/net/ipv4/ip_forward                                                                                                                                                                                                                                                                            
-
-
-
----------------------------------------------------------Dappt---------------------------------------------------------
+                attacker machine to forward the packets --> echo 1 >> /proc/sys/net/ipv4/ip_forward 
