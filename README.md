@@ -1,6 +1,6 @@
 # ArpSpoof-MITM-Framework
 
-        - Usage (attack on a network with 3 machines: router, attacker, target):
+        Script usage --> (attack on a network with 3 machines: router, attacker, target):
 
                 python3 arp-mitm.py {ROUTERIP} {TARGETIP}
 
