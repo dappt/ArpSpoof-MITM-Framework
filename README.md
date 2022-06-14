@@ -4,6 +4,8 @@
 
 Script Usage (attack on a network with 3 machines: router, attacker, target):
 
+                python3 arp-mitm.py {ROUTERIP} {TARGETIP}
+
         [-] Attacker sends ARP request to broadcast (everyone on LAN) in order to receive a response from someone who knows
             where the target machine is located 
             
