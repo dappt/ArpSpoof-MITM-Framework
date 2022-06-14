@@ -1,6 +1,6 @@
 # ArpSpoof-MITM-Framework
 
-## Script usage --> (attack on a network with 3 machines: router, attacker, target):
+  ## Script usage --> (attack on a network with 3 machines: router, attacker, target):
 
                 python3 arp-mitm.py {ROUTERIP} {TARGETIP}
 
@@ -20,7 +20,7 @@
             --> This will cause every outgoing packets from the target machine will be sent to both the router and the target
                 machine
     
-## Some useful Scapy commands:
+  ## Some useful Scapy commands:
 
         [-] ls(ARP) --> will list all fields required by an ARP packet
         
@@ -34,7 +34,7 @@
         
         [-] packet.op = 2 --> sending response
 
-## Methodology: 
+  ## Methodology: 
 
         [-] Send arp request through the broadcast MAC address, every machine on the LAN will receive 
             request and possibly send the reply
@@ -58,7 +58,7 @@
                 [-] target_mac_address = answer[0][1].hwsrc --> get mac address of target                                                                                                                                                                                                                              
                 [-] print(target_mac_address)
 
-### Craftinfg Malicious packet:
+  ### Craftinfg Malicious packet:
 
             [-] We are essentially going to craft a packet that will tell the target machine that
                     the attacker machine is a router, so it sends all of its packets to the attacker machine
@@ -72,7 +72,7 @@
                 
             [-] send(packet, verbose=False) --> sends malicious packet to spoof targets ARP table
             
-### Arp-tables on target machine:
+  ### Arp-tables on target machine:
 
             [-] You can run the command `arp -a` on the target machine before sending the malicious packet, 
                     and again after sending the malicious packet to confirm if we successfully spoofed the arp
