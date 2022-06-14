@@ -79,13 +79,13 @@ Script Usage (attack on a network with 3 machines: router, attacker, target):
                     and again after sending the malicious packet to confirm if we successfully spoofed the arp
                     tables on the target machine
 
-[!] Script should be run in a while loop to continuosly spoof the targets arp tables since the target machine will also still 
-    send the same ARP requests we are sending still
+            [!] Script should be run in a while loop to continuosly spoof the targets arp tables since the target machine will also still 
+                send the same ARP requests we are sending still
 
-[!] If the target machine is unable to access the internet after it has been spoofed then you may need to run this command on your 
-attacker machine to forward the packets: 
+            [!] If the target machine is unable to access the internet after it has been spoofed then you may need to run this command on your 
+                attacker machine to forward the packets: 
 
-    [-] echo 1 >> /proc/sys/net/ipv4/ip_forward                                                                                                                                                                                                                                                                            
+                 [-] echo 1 >> /proc/sys/net/ipv4/ip_forward                                                                                                                                                                                                                                                                            
 
 
 
