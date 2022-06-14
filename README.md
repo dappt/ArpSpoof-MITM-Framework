@@ -7,12 +7,12 @@ Script Usage (attack on a network with 3 machines: router, attacker, target):
         [-] Attacker sends ARP request to broadcast (everyone on LAN) in order to receive a response from someone who knows
             where the target machine is located 
             
-            --> This request contains the mac address of broadcast (destination) and the
+            --> This request contains the broadcast address and the
                 IP address of the target machine 
             
             --> The request essentially asks everyone on the network (through the broadcast address) who has {targetIP}? 
                 Hopefully a machine on the network who knows the location (MAC address of target machine) will respond with the 
-                information we are looking for
+                information we are looking for --> the target machines MAC address
 
         [-] Now that we have the MAC address of the target machine we can use it to craft a malicious packet that will tell
             the target machine that our MAC address is the same as the routers MAC address
